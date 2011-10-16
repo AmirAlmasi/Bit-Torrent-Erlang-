@@ -21,5 +21,9 @@ Amir Almasi <amir.fireflame@gmail.com>
 # Licensing
 It is a free software. you will find more information about the license in the license file.
 
+# Remaining time
+You will find the left time for this project on the following site:
+www.amiralmasi.com
+
 # Pre conditions of software 
-Erlang and Java virtual machine should be installed
+Erlang and Java virtual machines should be installed
