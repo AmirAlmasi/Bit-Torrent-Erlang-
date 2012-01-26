@@ -1,0 +1,41 @@
+Eshell V5.8.4
+(ErBit@Amir-PC)1> parser:start().
+bencoder module, start function:File has been read properly
+Parser module, bencodeData function: torrent file has been read correctly{dict,5,16,16,8,80,48,
+      {[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]},
+      {{[],[],[],
+        [[<<"announce-list">>,
+          [<<"udp://tracker.openbittorrent.com:80/announce">>],
+          [<<"http://tracker.openbittorrent.com/announ"...>>],
+          [<<"http://tracker.thepiratebay.org/anno"...>>],
+          [<<"udp://tracker.thepiratebay.org:8"...>>]]],
+        [],[],[],[],
+        [[<<"creation date">>|1256818123]],
+        [[<<"announce">>|<<"udp://tracker.openbittor"...>>]],
+        [[<<"comment">>|<<"Torrent downloaded f"...>>]],
+        [],[],[],
+        [[<<"info">>|{dict,...}]],
+        []}}}
+(ErBit@Amir-PC)2> Test = parser:start().
+bencoder module, start function:File has been read properly
+Parser module, bencodeData function: torrent file has been read correctly{dict,5,16,16,8,80,48,
+      {[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]},
+      {{[],[],[],
+        [[<<"announce-list">>,
+          [<<"udp://tracker.openbittorrent.com:80/announce">>],
+          [<<"http://tracker.openbittorrent.com/announ"...>>],
+          [<<"http://tracker.thepiratebay.org/anno"...>>],
+          [<<"udp://tracker.thepiratebay.org:8"...>>]]],
+        [],[],[],[],
+        [[<<"creation date">>|1256818123]],
+        [[<<"announce">>|<<"udp://tracker.openbittor"...>>]],
+        [[<<"comment">>|<<"Torrent downloaded f"...>>]],
+        [],[],[],
+        [[<<"info">>|{dict,...}]],
+        []}}}
+(ErBit@Amir-PC)3> dict:fetch_keys(Test).
+[<<"announce-list">>,<<"creation date">>,<<"announce">>,
+ <<"comment">>,<<"info">>]
+(ErBit@Amir-PC)4> dict:fetch_keys(dict:fetch(<<"info">>, Test)).
+[<<"length">>,<<"name">>,<<"piece length">>,<<"pieces">>]
+(ErBit@Amir-PC)5> 

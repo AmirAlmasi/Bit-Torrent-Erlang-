@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Module erbit_core</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module erbit_core</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul><html>The purpose of the module is to spawn new processes per each torrent
+  this module is responsible for updating the gui as well
+  <br> module has gen_server behavior </html>
+
+<p><b>Version:</b> 1.0.2</p>
+<p><b>Behaviours:</b> <a href="gen_server.html"><tt>gen_server</tt></a>.</p>
+<p><b>Authors:</b> Amir Almasi (<a href="mailto:amir.fireflame@gmail.com"><tt>amir.fireflame@gmail.com</tt></a>).</p>
+
+<h2><a name="description">Description</a></h2><html>The purpose of the module is to spawn new processes per each torrent
+  this module is responsible for updating the gui as well
+  <br> module has gen_server behavior </html>
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#code_change-3">code_change/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#doneTorrent-1">doneTorrent/1</a></td><td><html> A function to send done message to gui per each torrent file </html></td></tr>
+<tr><td valign="top"><a href="#exit-1">exit/1</a></td><td><html> A function to exit all the processes when gui is closed </html></td></tr>
+<tr><td valign="top"><a href="#handle_call-3">handle_call/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#handle_cast-2">handle_cast/2</a></td><td></td></tr>
+<tr><td valign="top"><a href="#handle_info-2">handle_info/2</a></td><td></td></tr>
+<tr><td valign="top"><a href="#init-1">init/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#readFile-2">readFile/2</a></td><td><html> A function to be called at first when a torrent file is chosen on GUI </html></td></tr>
+<tr><td valign="top"><a href="#start_link-1">start_link/1</a></td><td><html>An external function to start the erbit_core module
+  it gets peer Id as an argument </html></td></tr>
+<tr><td valign="top"><a href="#subscribe-2">subscribe/2</a></td><td><html> A function for each torrentManager to subscribe to the erbit_core to get
+  identifier and refrence </html></td></tr>
+<tr><td valign="top"><a href="#terminate-2">terminate/2</a></td><td></td></tr>
+<tr><td valign="top"><a href="#updateDownload-2">updateDownload/2</a></td><td><html>  A function to update the downloaded rate on GUI based on
+  each erbit_torrentInfoManager which is called in piece checker component,
+  Downloaded should be in byte </html></td></tr>
+<tr><td valign="top"><a href="#updateName-2">updateName/2</a></td><td><html> A function to update the torrent name on GUI base on each
+  erbit_torrentInfoManager </html></td></tr>
+<tr><td valign="top"><a href="#updatePeerList-2">updatePeerList/2</a></td><td><html>  A function to update the peers ip and port
+  on GUI based on each erbit_torrentInfoManager </html></td></tr>
+<tr><td valign="top"><a href="#updateSeeder-3">updateSeeder/3</a></td><td><html> A function to update the seeders and leechers on GUI based on
+  each erbit_torrentInfoManager </html></td></tr>
+<tr><td valign="top"><a href="#updateSize-2">updateSize/2</a></td><td><html> A function to update the torrent file size
+  on GUI based on each erbit_torrentInfoManager </html></td></tr>
+<tr><td valign="top"><a href="#updateTracker-2">updateTracker/2</a></td><td><html> A function to update the trackers name on GUI based on each
+  erbit_torrentInfoManager </html></td></tr>
+<tr><td valign="top"><a href="#updateUpload-2">updateUpload/2</a></td><td><html> A function to send done message to gui per each torrent file </html></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="code_change-3">code_change/3</a></h3>
+<div class="spec">
+<p><tt>code_change(OldVsn, State, Extra) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="doneTorrent-1">doneTorrent/1</a></h3>
+<div class="spec">
+<p><tt>doneTorrent(Reference::reference()) -&gt; ok</tt><br></p>
+</div><p><html> A function to send done message to gui per each torrent file </html></p>
+
+<h3 class="function"><a name="exit-1">exit/1</a></h3>
+<div class="spec">
+<p><tt>exit(Reason::any()) -&gt; ok</tt><br></p>
+</div><p><html> A function to exit all the processes when gui is closed </html></p>
+
+<h3 class="function"><a name="handle_call-3">handle_call/3</a></h3>
+<div class="spec">
+<p><tt>handle_call(Request, From, State) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="handle_cast-2">handle_cast/2</a></h3>
+<div class="spec">
+<p><tt>handle_cast(Msg, State) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="handle_info-2">handle_info/2</a></h3>
+<div class="spec">
+<p><tt>handle_info(Info, State) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="init-1">init/1</a></h3>
+<div class="spec">
+<p><tt>init(X1) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="readFile-2">readFile/2</a></h3>
+<div class="spec">
+<p><tt>readFile(TorrentfilePath::string(), X2::{string(), integer(), integer(), integer()}) -&gt; ok</tt><br></p>
+</div><p><html> A function to be called at first when a torrent file is chosen on GUI </html></p>
+
+<h3 class="function"><a name="start_link-1">start_link/1</a></h3>
+<div class="spec">
+<p><tt>start_link(PeerId::string()) -&gt; {ok, pid()}</tt><br></p>
+</div><p><html>An external function to start the erbit_core module
+  it gets peer Id as an argument </html></p>
+
+<h3 class="function"><a name="subscribe-2">subscribe/2</a></h3>
+<div class="spec">
+<p><tt>subscribe(Reference::reference(), Pid::pid()) -&gt; ok</tt><br></p>
+</div><p><html> A function for each torrentManager to subscribe to the erbit_core to get
+  identifier and refrence </html></p>
+
+<h3 class="function"><a name="terminate-2">terminate/2</a></h3>
+<div class="spec">
+<p><tt>terminate(Reason, State) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="updateDownload-2">updateDownload/2</a></h3>
+<div class="spec">
+<p><tt>updateDownload(Reference::reference(), Downloaded::integer()) -&gt; ok</tt><br></p>
+</div><p><html>  A function to update the downloaded rate on GUI based on
+  each erbit_torrentInfoManager which is called in piece checker component,
+  Downloaded should be in byte </html></p>
+
+<h3 class="function"><a name="updateName-2">updateName/2</a></h3>
+<div class="spec">
+<p><tt>updateName(Reference::reference(), Name::string()) -&gt; ok</tt><br></p>
+</div><p><html> A function to update the torrent name on GUI base on each
+  erbit_torrentInfoManager </html></p>
+
+<h3 class="function"><a name="updatePeerList-2">updatePeerList/2</a></h3>
+<div class="spec">
+<p><tt>updatePeerList(Reference::reference(), PeerList::list()) -&gt; ok</tt><br></p>
+</div><p><html>  A function to update the peers ip and port
+  on GUI based on each erbit_torrentInfoManager </html></p>
+
+<h3 class="function"><a name="updateSeeder-3">updateSeeder/3</a></h3>
+<div class="spec">
+<p><tt>updateSeeder(Reference::reference(), Seeders::integer(), Leechers::integer()) -&gt; ok</tt><br></p>
+</div><p><html> A function to update the seeders and leechers on GUI based on
+  each erbit_torrentInfoManager </html></p>
+
+<h3 class="function"><a name="updateSize-2">updateSize/2</a></h3>
+<div class="spec">
+<p><tt>updateSize(Reference::reference(), Size::pid()) -&gt; ok</tt><br></p>
+</div><p><html> A function to update the torrent file size
+  on GUI based on each erbit_torrentInfoManager </html></p>
+
+<h3 class="function"><a name="updateTracker-2">updateTracker/2</a></h3>
+<div class="spec">
+<p><tt>updateTracker(Reference::reference(), TrackerName::list()) -&gt; ok</tt><br></p>
+</div><p><html> A function to update the trackers name on GUI based on each
+  erbit_torrentInfoManager </html></p>
+
+<h3 class="function"><a name="updateUpload-2">updateUpload/2</a></h3>
+<div class="spec">
+<p><tt>updateUpload(Reference::reference(), Byte::byte()) -&gt; ok</tt><br></p>
+</div><p><html> A function to send done message to gui per each torrent file </html></p>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc, Dec 21 2011, 16:10:42.</i></p>
+</body>
+</html>

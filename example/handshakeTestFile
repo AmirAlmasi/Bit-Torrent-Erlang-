@@ -1,0 +1,5 @@
+To run the handshake just run the connect function with 3 args
+
+example:  handshake:connect({127,0,0,1},555,0).  The 0 indicates that it should be runned with the test values.
+
+If you want to give it another handshake put it as the 3rd argument.
